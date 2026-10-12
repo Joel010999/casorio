@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    name="viewport" />
+  <meta content="mobile_blank" name="shell-type" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Montserrat:wght@300;400;500&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script
+    id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-primary-fixed': '#1d1b19', 'on-secondary-fixed-variant': '#564421', 'secondary': '#705b36', 'on-secondary-container': '#76613b', 'surface-container-high': '#eae8e4', 'on-tertiary-fixed-variant': '#444938', 'on-tertiary': '#ffffff', 'surface-bright': '#fbf9f5', 'on-secondary': '#ffffff', 'primary-container': '#2f2d2a', 'tertiary-fixed': '#e0e5cf', 'on-surface': '#1b1c1a', 'error-container': '#ffdad6', 'surface-container-highest': '#e4e2de', 'on-background': '#1b1c1a', 'surface-container-lowest': '#ffffff', 'outline-variant': '#ccc6bc', 'on-tertiary-fixed': '#191d10', 'secondary-fixed': '#fbdfaf', 'on-error-container': '#93000a', 'tertiary-container': '#2a2f20', 'surface-container': '#efeeea', 'primary-fixed': '#e7e2dd', 'on-secondary-fixed': '#271900', 'surface-tint': '#615e5a', 'surface-container-low': '#f5f3ef', 'on-tertiary-container': '#929783', 'inverse-surface': '#30312e', 'outline': '#7b766f', 'surface-dim': '#dbdad6', 'on-surface-variant': '#4a463f', 'on-error': '#ffffff', 'background': '#fbf9f5', 'inverse-primary': '#cbc6c1', 'surface-variant': '#e4e2de', 'surface': '#fbf9f5', 'error': '#ba1a1a', 'on-primary-container': '#989490', 'primary-fixed-dim': '#cbc6c1', 'on-primary': '#ffffff', 'tertiary-fixed-dim': '#c4c9b4', 'inverse-on-surface': '#f2f0ed', 'tertiary': '#161a0d', 'secondary-container': '#fbdfaf', 'on-primary-fixed-variant': '#494643', 'primary': '#1a1916', 'secondary-fixed-dim': '#dec395' }, borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' }, spacing: { 'gutter': '1.5rem', 'space-lg': '2.5rem', 'gutter-mobile': '1rem', 'space-xs': '0.375rem', 'margin': '3rem', 'space-md': '1.5rem', 'space-xl': '4.5rem', 'margin-mobile': '1.25rem', 'space-sm': '0.75rem' }, fontFamily: { 'script-flourish': ['Playfair Display'], 'headline-lg-mobile': ['Playfair Display'], 'body-md': ['Montserrat'], 'body-lg': ['Montserrat'], 'display-hero': ['Playfair Display'], 'label-caps': ['Montserrat'], 'label-sm': ['Montserrat'], 'headline-md': ['Playfair Display'], 'display-hero-mobile': ['Playfair Display'], 'headline-lg': ['Playfair Display'] }, fontSize: { 'script-flourish': ['22px', { lineHeight: '32px', letterSpacing: '0.04em', fontWeight: '400' }], 'headline-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '0.01em', fontWeight: '400' }], 'body-md': ['14px', { lineHeight: '24px', letterSpacing: '0.03em', fontWeight: '300' }], 'body-lg': ['16px', { lineHeight: '28px', letterSpacing: '0.02em', fontWeight: '300' }], 'display-hero': ['56px', { lineHeight: '64px', letterSpacing: '0.02em', fontWeight: '400' }], 'label-caps': ['11px', { lineHeight: '16px', letterSpacing: '0.22em', fontWeight: '500' }], 'label-sm': ['12px', { lineHeight: '18px', letterSpacing: '0.08em', fontWeight: '400' }], 'headline-md': ['24px', { lineHeight: '32px', letterSpacing: '0.01em', fontWeight: '400' }], 'display-hero-mobile': ['38px', { lineHeight: '46px', letterSpacing: '0.01em', fontWeight: '400' }], 'headline-lg': ['36px', { lineHeight: '44px', letterSpacing: '0.02em', fontWeight: '400' }] } } } };</script>
+  <style>
+    @layer base {
+
+      html,
+      body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #fbf9f5;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+
+      main>:first-child {
+        margin-top: 0 !important;
+      }
+
+      main>:last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(3deg);
+      }
+
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+    }
+
+    @keyframes float-reverse {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(12px) rotate(-3deg);
+      }
+
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+    }
+
+    .flower-deco {
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .flower-deco-alt {
+      animation: float-reverse 8s ease-in-out infinite;
+    }
+
+    .floral-path {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .floral-leaf {
+      fill: currentColor;
+      opacity: 0.7;
+    }
+
+    /* ===== ARCO FLORAL BOHO CON TELAS DRAPEADAS ===== */
+    .arco-boda {
+      position: relative;
+      isolation: isolate;
+      background: #fbf9f5;
+    }
+
+    .arco-boda__estuco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .arco-boda__velo {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(251,249,245,0.02) 0%, rgba(251,249,245,0.3) 38%, rgba(251,249,245,0.88) 68%, #fbf9f5 94%);
+      pointer-events: none;
+    }
+
+    .arco-boda__deco {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .arco-boda__contenido {
+      position: relative;
+      z-index: 3;
+      padding-top: 42%;
+    }
+
+    /* Brisa suave y continua en las telas (direcciones opuestas) */
+    @keyframes tela-brisa-izq {
+      0%, 100% {
+        transform: skewX(0deg) translateX(0);
+      }
+      50% {
+        transform: skewX(-1.5deg) translateX(2.5px);
+      }
+    }
+
+    @keyframes tela-brisa-der {
+      0%, 100% {
+        transform: skewX(0deg) translateX(0);
+      }
+      50% {
+        transform: skewX(1.8deg) translateX(-2.5px);
+      }
+    }
+
+    .tela-drape-izq {
+      transform-origin: 15% 0%;
+      animation: tela-brisa-izq 9.5s ease-in-out infinite;
+    }
+
+    .tela-drape-der {
+      transform-origin: 85% 0%;
+      animation: tela-brisa-der 11s ease-in-out infinite;
+    }
+
+    /* Vaivén orgánico de pampas y hojas secas desde su base */
+    @keyframes pampa-vaiven-1 {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(1.8deg); }
+    }
+    @keyframes pampa-vaiven-2 {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-2deg); }
+    }
+    @keyframes pampa-vaiven-3 {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(1.5deg); }
+    }
+
+    .pampa-anim-1 {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: pampa-vaiven-1 8s ease-in-out infinite;
+    }
+    .pampa-anim-2 {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: pampa-vaiven-2 9.5s ease-in-out infinite 1.2s;
+    }
+    .pampa-anim-3 {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: pampa-vaiven-3 8.8s ease-in-out infinite 2.5s;
+    }
+
+    /* Leve flotación y rotación sutil en las orquídeas */
+    @keyframes flor-flota-1 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-3.5px) rotate(1.2deg); }
+    }
+    @keyframes flor-flota-2 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(3px) rotate(-1.5deg); }
+    }
+    @keyframes flor-flota-3 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-2.5px) rotate(-1deg); }
+    }
+
+    .flor-anim-1 {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: flor-flota-1 7s ease-in-out infinite;
+    }
+    .flor-anim-2 {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: flor-flota-2 8.5s ease-in-out infinite 1.1s;
+    }
+    .flor-anim-3 {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: flor-flota-3 6.8s ease-in-out infinite 2.2s;
+    }
+
+    /* Animación de entrada al aparecer con AOS */
+    @keyframes caida-telas {
+      0% {
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes brote-flores {
+      0% {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .arco-boda[data-aos].aos-animate .arco-telas-grupo {
+      transform-box: fill-box;
+      transform-origin: top center;
+      animation: caida-telas 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .arco-boda[data-aos].aos-animate .arco-flores-grupo {
+      transform-box: fill-box;
+      transform-origin: top center;
+      animation: brote-flores 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tela-drape-izq,
+      .tela-drape-der,
+      .pampa-anim-1,
+      .pampa-anim-2,
+      .pampa-anim-3,
+      .flor-anim-1,
+      .flor-anim-2,
+      .flor-anim-3,
+      .arco-telas-grupo,
+      .arco-flores-grupo {
+        animation: none !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body
+  class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen relative overflow-x-hidden overflow-hidden">
+  <!-- Elemento de audio para música de fondo -->
+  <audio id="wedding-audio" src="cancion.mp3" preload="auto" loop></audio>
+
+  <!-- PORTADA / GATE DE BIENVENIDA (BLOQUEA LA TARJETA HASTA ELEGIR UNA OPCIÓN) -->
+  <div id="welcome-gate"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/85 backdrop-blur-md p-3 sm:p-6 transition-all duration-700 ease-out">
+    <div
+      class="relative w-full max-w-[440px] h-[92vh] max-h-[720px] min-h-[520px] rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-end p-6 sm:p-8 text-center border border-white/10 select-none">
+      <!-- Imagen de fondo de los novios con atmósfera cálida -->
+      <img
+        class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
+        alt="Retrato de Marina y Maxi" src="pareja.jpg" />
+      <!-- Degradado de velo translúcido para legibilidad -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent"></div>
+      <!-- Contenido de bienvenida -->
+      <div class="relative z-10 flex flex-col items-center gap-3 mb-2 text-white">
+        <div
+          class="w-11 h-11 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center mb-1 text-white border border-white/20 shadow-inner">
+          <span class="material-symbols-outlined text-[20px]">favorite</span>
+        </div>
+        <p class="font-label-caps text-[11px] text-[#fbdfaf] tracking-[0.28em] uppercase">Bienvenidos a nuestra boda</p>
+        <h1
+          class="font-display-hero-mobile text-[34px] sm:text-[40px] leading-tight tracking-wide font-normal text-white">
+          Marina &amp; Maxi
+        </h1>
+        <div class="w-12 h-px bg-[#fbdfaf]/60 my-1"></div>
+        <p class="font-body-md text-[13px] text-white/90 max-w-xs font-light">
+          La música es parte de esta experiencia nupcial
+        </p>
+        <!-- Botones táctiles -->
+        <div class="grid grid-cols-2 gap-3 w-full mt-4 max-w-xs">
+          <button
+            class="py-3 px-3 rounded-xl bg-[#705b36] hover:bg-[#836a3f] active:scale-95 text-white font-label-caps text-[11px] shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer"
+            id="btn-audio-enter">
+            <span class="material-symbols-outlined text-[18px]">volume_up</span>
+            <span>Con música</span>
+          </button>
+          <button
+            class="py-3 px-3 rounded-xl bg-[#45423e]/90 hover:bg-[#5a5652] active:scale-95 text-white backdrop-blur-md font-label-caps text-[11px] shadow-lg flex items-center justify-center transition-all cursor-pointer"
+            id="btn-silent-enter">
+            <span>Sin música</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flores Decorativas Fijas en las esquinas -->
+  <svg
+    class="flower-deco fixed top-0 left-0 w-48 h-48 md:w-64 md:h-64 text-secondary-fixed-dim/40 pointer-events-none -translate-x-12 -translate-y-12 z-0"
+    viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path class="floral-path" d="M 0,100 C 20,70 40,40 100,0" />
+    <path class="floral-leaf" d="M 15,80 C 5,60 15,40 30,50 C 45,60 35,85 15,80 Z" />
+    <path class="floral-leaf" d="M 40,50 C 35,30 50,15 65,25 C 80,35 60,60 40,50 Z" />
+    <path class="floral-leaf" d="M 75,20 C 75,5 95,-5 100,10 C 105,25 85,35 75,20 Z" />
+    <circle cx="55" cy="70" r="2" fill="currentColor" opacity="0.5" />
+    <circle cx="25" cy="30" r="1.5" fill="currentColor" opacity="0.5" />
+  </svg>
+  <svg
+    class="flower-deco-alt fixed bottom-0 right-0 w-56 h-56 md:w-72 md:h-72 text-secondary/30 pointer-events-none translate-x-16 translate-y-16 z-0"
+    viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1) scaleY(-1);">
+    <path class="floral-path" d="M 0,100 C 20,70 40,40 100,0" />
+    <path class="floral-leaf" d="M 15,80 C 5,60 15,40 30,50 C 45,60 35,85 15,80 Z" />
+    <path class="floral-leaf" d="M 40,50 C 35,30 50,15 65,25 C 80,35 60,60 40,50 Z" />
+    <path class="floral-leaf" d="M 75,20 C 75,5 95,-5 100,10 C 105,25 85,35 75,20 Z" />
+  </svg>
+  <main
+    class="flex-1 flex flex-col relative w-full pt-safe pb-safe bg-surface/80 backdrop-blur-[2px] z-10 overflow-hidden">
+    <div class="flex flex-col w-full max-w-[540px] mx-auto px-4 pb-20 relative text-on-surface">
+      <!-- SECCIÓN 1: PORTADA PRINCIPAL DE LA INVITACIÓN -->
+      <section data-aos="fade-down" data-aos-duration="1200"
+        class="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container-low mb-12">
+        <div class="relative h-[68vh] min-h-[460px] w-full flex flex-col justify-end p-6 text-center overflow-hidden">
+          <img class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+            alt="Retrato de Marina y Maxi" src="pareja.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/35 to-transparent"></div>
+          <div class="relative z-10 flex flex-col items-center gap-2 mb-4 text-on-primary">
+            <p class="font-label-caps text-label-caps text-secondary-fixed tracking-[0.28em] uppercase">Nuestra Boda</p>
+            <h1 class="font-display-hero-mobile text-display-hero-mobile tracking-wide font-normal text-surface-bright">
+              Marina &amp; Maxi
+            </h1>
+            <div class="w-12 h-px bg-secondary-fixed/50 my-1"></div>
+            <p class="font-label-caps text-label-caps text-surface-container-high tracking-[0.25em]">
+              08 · 12 · 2026
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- SECCIÓN: ARCO FLORAL BOHO CON TELAS DRAPEADAS (Eclesiastés 4:12) -->
+      <section data-aos="fade-up" data-aos-duration="1200"
+        class="arco-boda rounded-2xl overflow-hidden shadow-sm mb-12 border border-outline-variant/30"
+        aria-label="Eclesiastés 4:12">
+        <!-- Fondo de pared de estuco / piedra caliza rugosa con filtro SVG nativo -->
+        <svg class="arco-boda__estuco" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <filter id="filtro-estuco" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.032 0.038" numOctaves="4" seed="15" result="ruido"/>
+              <feDiffuseLighting in="ruido" surfaceScale="2.8" diffuseConstant="1.1" lighting-color="#fff8ed" result="luz">
+                <feDistantLight azimuth="225" elevation="55"/>
+              </feDiffuseLighting>
+            </filter>
+          </defs>
+          <rect width="100%" height="100%" fill="#ede3cf"/>
+          <rect width="100%" height="100%" filter="url(#filtro-estuco)" style="mix-blend-mode:multiply" opacity="0.88"/>
+        </svg>
+
+        <!-- Velo que desvanece suavemente hacia marfil para máxima legibilidad del versículo -->
+        <div class="arco-boda__velo"></div>
+
+        <!-- Arco floral boho: telas drapeadas, hojas secas (palmas), pampas plumosas y orquídeas blancas -->
+        <svg class="arco-boda__deco" viewBox="0 0 540 300" role="img" aria-label="Arco floral boho con telas drapeadas" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Degradados de telas drapeadas (gasa/tul marfil translúcido) -->
+            <linearGradient id="gTelaDiagonal" x1="0" y1="0" x2="0.85" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+              <stop offset="30%" stop-color="#faf5ea" stop-opacity="0.90"/>
+              <stop offset="65%" stop-color="#f2e8d4" stop-opacity="0.75"/>
+              <stop offset="90%" stop-color="#ebdcc1" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#e8d8bd" stop-opacity="0.0"/>
+            </linearGradient>
+            <linearGradient id="gTelaFeston" x1="0" y1="0" x2="1" y2="0.8">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.96"/>
+              <stop offset="45%" stop-color="#f8f2e4" stop-opacity="0.92"/>
+              <stop offset="100%" stop-color="#eedfc6" stop-opacity="0.85"/>
+            </linearGradient>
+            <linearGradient id="gTelaDerecha" x1="1" y1="0" x2="0.1" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+              <stop offset="40%" stop-color="#f9f3e6" stop-opacity="0.88"/>
+              <stop offset="75%" stop-color="#f0e4cc" stop-opacity="0.65"/>
+              <stop offset="100%" stop-color="#ebdcc0" stop-opacity="0.0"/>
+            </linearGradient>
+
+            <!-- Degradado pétalo orquídea marfil -->
+            <radialGradient id="gPetalo" cx="45%" cy="65%" r="75%">
+              <stop offset="0%" stop-color="#fbf7ec"/>
+              <stop offset="60%" stop-color="#ffffff"/>
+              <stop offset="90%" stop-color="#faf4e8"/>
+              <stop offset="100%" stop-color="#f1e3cc"/>
+            </radialGradient>
+
+            <!-- Sombras suaves botánicas y textiles -->
+            <filter id="sombra-suave" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="2.5" stdDeviation="2.5" flood-color="#4d3f27" flood-opacity="0.22"/>
+            </filter>
+            <filter id="sombra-tela" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow dx="1" dy="3.5" stdDeviation="3.5" flood-color="#5a492d" flood-opacity="0.18"/>
+            </filter>
+
+            <!-- Símbolo: Palma seca boho en abanico (Sun Palm) -->
+            <g id="palma-boho">
+              <path d="M0,0 L0,-35" stroke="#9e8558" stroke-width="2" stroke-linecap="round"/>
+              <path d="M0,-35 L-32,-96 L-22,-108 L-14,-98 L-7,-114 L0,-104 L7,-114 L14,-98 L22,-108 L32,-96 Z" fill="#d0be97" stroke="#bca678" stroke-width="0.7"/>
+              <polygon points="0,-35 -32,-96 -22,-108" fill="#c3ae84" opacity="0.55"/>
+              <polygon points="0,-35 -14,-98 -7,-114" fill="#c7b38a" opacity="0.5"/>
+              <polygon points="0,-35 0,-104 7,-114" fill="#decab1" opacity="0.6"/>
+              <polygon points="0,-35 14,-98 22,-108" fill="#c3ae84" opacity="0.55"/>
+              <path d="M0,-35 L-32,-96 M0,-35 L-22,-108 M0,-35 L-14,-98 M0,-35 L-7,-114 M0,-35 L0,-104 M0,-35 L7,-114 M0,-35 L14,-98 M0,-35 L22,-108 M0,-35 L32,-96" stroke="#967e52" stroke-width="0.75" opacity="0.65"/>
+            </g>
+
+            <!-- Símbolo: Pampa plumosa estilizada -->
+            <g id="pampa-plumosa">
+              <path d="M0,0 Q-2,-50 0,-105" stroke="#aa9267" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M0,-105 C-6,-95 -14,-82 -18,-72 C-12,-70 -5,-72 -1,-68 C-8,-60 -15,-48 -19,-36 C-12,-34 -5,-38 -1,-32 C-7,-25 -12,-14 -14,-4 C-7,-7 1,-12 2,-18 C5,-12 12,-5 17,-7 C14,-17 8,-26 2,-34 C7,-38 15,-34 19,-37 C15,-48 9,-58 2,-65 C6,-69 13,-66 17,-70 C12,-80 6,-94 0,-105 Z" fill="#ddcba3" opacity="0.88"/>
+              <path d="M0,-100 C-4,-90 -9,-78 -13,-68 C-8,-66 -3,-68 0,-64 C-5,-56 -11,-45 -14,-34 C-9,-32 -3,-36 0,-30 C-5,-23 -9,-13 -10,-4 C-4,-6 2,-10 3,-15 C5,-10 10,-4 14,-6 C11,-15 7,-23 2,-30 C6,-34 12,-30 15,-33 C11,-42 6,-51 1,-57 C4,-60 9,-58 12,-61 C8,-70 4,-82 0,-100 Z" fill="#ede0c2" opacity="0.75"/>
+              <path d="M-2,-78 Q-14,-86 -22,-80 M-1,-64 Q-16,-70 -24,-62 M0,-50 Q-18,-54 -24,-44 M1,-36 Q-14,-40 -20,-29 M0,-74 Q13,-82 20,-76 M1,-60 Q15,-66 22,-58 M0,-46 Q16,-52 24,-42 M-1,-32 Q14,-37 20,-26" stroke="#c2ad82" stroke-width="0.85" fill="none" stroke-linecap="round" opacity="0.7"/>
+            </g>
+
+            <!-- Símbolo: Ramita verde salvia -->
+            <g id="ramita-salvia">
+              <path d="M0,0 C-4,-30 -8,-65 0,-95" stroke="#727964" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+              <ellipse cx="-8" cy="-28" rx="7.5" ry="3.5" transform="rotate(-35 -8 -28)" fill="#828774" opacity="0.88"/>
+              <ellipse cx="7" cy="-45" rx="7.5" ry="3.5" transform="rotate(32 7 -45)" fill="#8d937f" opacity="0.88"/>
+              <ellipse cx="-9" cy="-62" rx="7" ry="3.2" transform="rotate(-38 -9 -62)" fill="#828774" opacity="0.88"/>
+              <ellipse cx="8" cy="-78" rx="6.5" ry="3" transform="rotate(36 8 -78)" fill="#949b86" opacity="0.88"/>
+              <ellipse cx="0" cy="-94" rx="5" ry="2.5" transform="rotate(-15 0 -94)" fill="#828774" opacity="0.88"/>
+            </g>
+
+            <!-- Símbolo: Orquídea blanca botánica -->
+            <g id="orquidea-flor">
+              <g filter="url(#sombra-suave)">
+                <path d="M0,0 C-7,-12 -7,-27 0,-34 C7,-27 7,-12 0,0 Z" fill="url(#gPetalo)" stroke="#dfd4be" stroke-width="0.55"/>
+                <path d="M0,0 C-14,-4 -26,9 -32,20 C-22,23 -10,14 0,0 Z" fill="url(#gPetalo)" stroke="#dfd4be" stroke-width="0.55"/>
+                <path d="M0,0 C14,-4 26,9 32,20 C22,23 10,14 0,0 Z" fill="url(#gPetalo)" stroke="#dfd4be" stroke-width="0.55"/>
+                <path d="M0,-4 C-12,-16 -28,-14 -32,-3 C-35,10 -20,16 0,-2 Z" fill="url(#gPetalo)" stroke="#e4dac6" stroke-width="0.55"/>
+                <path d="M0,-4 C12,-16 28,-14 32,-3 C35,10 20,16 0,-2 Z" fill="url(#gPetalo)" stroke="#e4dac6" stroke-width="0.55"/>
+                <path d="M-9,-2 C-12,7 -6,16 0,17 C6,16 12,7 9,-2 C5,-5 -5,-5 -9,-2 Z" fill="#f5edd7" stroke="#d5c292" stroke-width="0.55"/>
+                <path d="M-6,3 C-8,10 -2,14 0,14 C2,14 8,10 6,3 C3,1 -3,1 -6,3 Z" fill="#ebd9a7"/>
+                <ellipse cx="0" cy="-1.5" rx="3.5" ry="4.5" fill="#c4a558"/>
+                <circle cx="0" cy="-2.5" r="1.8" fill="#ffdb7d"/>
+                <circle cx="-3" cy="8" r="0.9" fill="#99752b"/>
+                <circle cx="3" cy="8" r="0.9" fill="#99752b"/>
+                <circle cx="0" cy="11" r="0.8" fill="#99752b"/>
+              </g>
+            </g>
+          </defs>
+
+          <!-- 1. BASE: Pampas y palmas secas detrás (abundantes y plumosas) -->
+          <g class="arco-base-vegetal">
+            <!-- Izquierda: Palmas secas en abanico -->
+            <g transform="translate(55,120) rotate(-74) scale(1.18)"><g class="pampa-anim-1"><use href="#palma-boho"/></g></g>
+            <g transform="translate(85,112) rotate(-38) scale(1.30)"><g class="pampa-anim-2"><use href="#palma-boho"/></g></g>
+            <g transform="translate(120,95) rotate(-12) scale(1.05)"><g class="pampa-anim-3"><use href="#palma-boho"/></g></g>
+            <!-- Izquierda: Pampas plumosas doradas -->
+            <g transform="translate(38,125) rotate(-60) scale(1.30)"><g class="pampa-anim-2"><use href="#pampa-plumosa"/></g></g>
+            <g transform="translate(75,108) rotate(-26) scale(1.38)"><g class="pampa-anim-1"><use href="#pampa-plumosa"/></g></g>
+            <g transform="translate(130,90) rotate(8) scale(1.12)"><g class="pampa-anim-3"><use href="#pampa-plumosa"/></g></g>
+
+            <!-- Derecha: Palmas secas en abanico -->
+            <g transform="translate(485,120) rotate(74) scale(1.18)"><g class="pampa-anim-2"><use href="#palma-boho"/></g></g>
+            <g transform="translate(455,112) rotate(38) scale(1.30)"><g class="pampa-anim-1"><use href="#palma-boho"/></g></g>
+            <g transform="translate(420,95) rotate(12) scale(1.05)"><g class="pampa-anim-3"><use href="#palma-boho"/></g></g>
+            <!-- Derecha: Pampas plumosas doradas -->
+            <g transform="translate(502,125) rotate(60) scale(1.30)"><g class="pampa-anim-3"><use href="#pampa-plumosa"/></g></g>
+            <g transform="translate(465,108) rotate(26) scale(1.38)"><g class="pampa-anim-2"><use href="#pampa-plumosa"/></g></g>
+            <g transform="translate(410,90) rotate(-8) scale(1.12)"><g class="pampa-anim-1"><use href="#pampa-plumosa"/></g></g>
+
+            <!-- Conexión sutil centro superior -->
+            <g transform="translate(255,18) rotate(88) scale(0.72)"><g class="pampa-anim-3"><use href="#pampa-plumosa"/></g></g>
+            <g transform="translate(285,18) rotate(-88) scale(0.72)"><g class="pampa-anim-1"><use href="#pampa-plumosa"/></g></g>
+          </g>
+
+          <!-- 2. TELAS DRAPEADAS (Gasa/tul en marfil con drapeado fluido y cola larga) -->
+          <g class="arco-telas-grupo" filter="url(#sombra-tela)">
+            <!-- Tela izquierda: Festón superior + Cola larga diagonal hacia abajo a la derecha -->
+            <g class="tela-drape-izq">
+              <path d="M-15,-8 L255,-8 C242,42 192,88 112,106 C60,116 18,116 -15,116 Z" fill="url(#gTelaFeston)"/>
+              <path d="M-15,28 C65,30 168,18 238,-8" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.3" fill="none"/>
+              <path d="M10,-8 C40,54 22,94 -14,110 M78,-8 C104,54 88,90 48,110 M146,-8 C168,46 148,82 110,100" stroke="#d5c7ab" stroke-opacity="0.5" stroke-width="1.1" fill="none"/>
+              <!-- Cola larga diagonal -->
+              <path d="M94,72 C132,152 216,236 342,286 L376,276 C270,224 176,138 142,54 Z" fill="url(#gTelaDiagonal)"/>
+              <!-- Pliegues y brillo de la cola -->
+              <path d="M112,88 C158,160 242,232 348,278" stroke="#ffffff" stroke-opacity="0.9" stroke-width="1.3" fill="none"/>
+              <path d="M128,72 C172,142 258,216 362,272" stroke="#d5c7ab" stroke-opacity="0.6" stroke-width="1" fill="none"/>
+              <path d="M102,102 C146,172 226,242 328,284" stroke="#ffffff" stroke-opacity="0.75" stroke-width="1.1" fill="none"/>
+            </g>
+
+            <!-- Tela derecha: Cuelga desde esquina superior derecha -->
+            <g class="tela-drape-der">
+              <path d="M555,-8 L292,-8 C310,42 382,78 468,80 C510,81 536,70 555,62 Z" fill="url(#gTelaDerecha)"/>
+              <path d="M322,-8 C350,36 410,60 472,62" stroke="#d5c7ab" stroke-opacity="0.55" stroke-width="1.1" fill="none"/>
+              <path d="M388,-8 C414,28 456,48 514,52" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.3" fill="none"/>
+              <path d="M455,-8 C480,24 515,44 555,48" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1.1" fill="none"/>
+            </g>
+          </g>
+
+          <!-- 3. RAMITAS VERDE SALVIA -->
+          <g class="arco-salvia-grupo">
+            <!-- Izquierda -->
+            <g transform="translate(38,138) rotate(-42) scale(0.9)"><use href="#ramita-salvia"/></g>
+            <g transform="translate(85,112) rotate(18) scale(0.85)"><use href="#ramita-salvia"/></g>
+            <g transform="translate(120,85) rotate(48) scale(0.75)"><use href="#ramita-salvia"/></g>
+            <!-- Derecha -->
+            <g transform="translate(502,140) rotate(42) scale(0.9)"><use href="#ramita-salvia"/></g>
+            <g transform="translate(455,112) rotate(-18) scale(0.85)"><use href="#ramita-salvia"/></g>
+            <g transform="translate(420,85) rotate(-48) scale(0.75)"><use href="#ramita-salvia"/></g>
+            <!-- Centro guirnalda -->
+            <g transform="translate(230,22) rotate(82) scale(0.65)"><use href="#ramita-salvia"/></g>
+            <g transform="translate(310,22) rotate(-82) scale(0.65)"><use href="#ramita-salvia"/></g>
+          </g>
+
+          <!-- 4. ORQUÍDEAS BLANCAS (racimos en esquinas superiores y acentos) -->
+          <g class="arco-flores-grupo">
+            <!-- Racimo izquierdo -->
+            <g transform="translate(68,84) rotate(8) scale(1.5)"><g class="flor-anim-1"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(116,106) rotate(-22) scale(1.22)"><g class="flor-anim-2"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(32,126) rotate(32) scale(1.08)"><g class="flor-anim-3"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(128,58) rotate(4) scale(0.92)"><g class="flor-anim-1"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(86,48) rotate(-12) scale(0.78)"><g class="flor-anim-2"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(42,72) rotate(-26) scale(0.72)"><g class="flor-anim-3"><use href="#orquidea-flor"/></g></g>
+
+            <!-- Racimo derecho -->
+            <g transform="translate(476,86) rotate(-10) scale(1.55)"><g class="flor-anim-2"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(426,62) rotate(22) scale(1.20)"><g class="flor-anim-1"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(506,138) rotate(14) scale(1.12)"><g class="flor-anim-3"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(416,100) rotate(-16) scale(0.88)"><g class="flor-anim-2"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(456,52) rotate(6) scale(0.78)"><g class="flor-anim-1"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(498,74) rotate(24) scale(0.72)"><g class="flor-anim-3"><use href="#orquidea-flor"/></g></g>
+
+            <!-- Flores puente superiores -->
+            <g transform="translate(200,24) rotate(-4) scale(0.68)"><g class="flor-anim-1"><use href="#orquidea-flor"/></g></g>
+            <g transform="translate(340,24) rotate(14) scale(0.65)"><g class="flor-anim-2"><use href="#orquidea-flor"/></g></g>
+          </g>
+        </svg>
+
+        <div class="arco-boda__contenido flex flex-col items-center text-center pb-10 px-6 sm:px-8">
+          <div class="w-9 h-9 rounded-full bg-surface-container/70 backdrop-blur-xs flex items-center justify-center text-secondary mb-3 shadow-inner">
+            <span class="material-symbols-outlined text-[19px]">format_quote</span>
+          </div>
+          <p class="font-script-flourish italic text-[18px] sm:text-[20px] leading-relaxed text-primary max-w-sm font-normal">
+            “Uno solo puede ser vencido, pero dos se defienden mejor. Es que la cuerda de tres hilos no se rompe
+            fácilmente.”
+          </p>
+          <div class="w-10 h-px bg-secondary/60 my-4"></div>
+          <span class="font-label-caps text-label-caps text-secondary tracking-[0.22em] uppercase">Eclesiastés 4:12</span>
+        </div>
+      </section>
+      <!-- SECCIÓN 2: HERO DE INVITACIÓN FORMAL -->
+      <section data-aos="fade-up" data-aos-duration="1200"
+        class="flex flex-col items-center text-center py-6 px-4 bg-surface-container-lowest/90 backdrop-blur-sm rounded-2xl shadow-sm mb-12 relative overflow-hidden">
+        <!-- Flores internas -->
+        <svg class="absolute top-0 right-0 w-24 h-24 text-secondary/20 -translate-y-4 translate-x-4 flower-deco"
+          viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path class="floral-leaf" d="M50,50 C30,20 70,0 90,30 C110,60 70,80 50,50 Z" />
+        </svg>
+        <!-- Monograma botánico -->
+        <div
+          class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-secondary mb-4 shadow-inner">
+          <span class="font-script-flourish text-script-flourish italic">M &amp; M</span>
+        </div>
+        <span class="font-label-caps text-label-caps text-secondary tracking-[0.25em] uppercase mb-1">Marina &amp;
+          Maxi</span>
+        <h2 class="font-display-hero-mobile text-display-hero-mobile text-primary tracking-normal mb-6">Nos casamos</h2>
+        <!-- Bloque de fecha editorial tipo tarjeta de imprenta artesanal -->
+        <div class="w-full bg-surface-container-low rounded-xl p-6 flex flex-col items-center gap-2 my-2 shadow-sm">
+          <span
+            class="font-label-caps text-label-caps text-secondary-fixed-variant tracking-[0.2em] uppercase">Diciembre</span>
+          <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-wider">Martes</span>
+          <div class="flex items-center gap-3 my-1">
+            <span class="w-8 h-px bg-outline-variant"></span>
+            <span class="font-display-hero-mobile text-display-hero-mobile text-secondary font-normal tracking-tight">08
+              / 12 / 26</span>
+            <span class="w-8 h-px bg-outline-variant"></span>
+          </div>
+          <div class="flex items-center gap-1.5 text-on-surface-variant font-body-md text-body-md">
+            <span class="material-symbols-outlined text-[18px] text-secondary">schedule</span>
+            <span>13:00 hs</span>
+          </div>
+        </div>
+        <!-- Botón RSVP con apertura de Drawer/Modal -->
+        <button
+          class="mt-6 w-full max-w-xs py-4 px-6 rounded-lg bg-primary-container text-surface-bright font-label-caps text-label-caps tracking-[0.2em] shadow-lg hover:bg-primary active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+          id="btn-open-rsvp">
+          <span class="material-symbols-outlined text-[18px] text-secondary-fixed">mail</span>
+          <span>Confirmar Asistencia</span>
+        </button>
+      </section>
+      <!-- SECCIÓN 3: CUENTA REGRESIVA DINÁMICA -->
+      <section data-aos="fade-up" data-aos-duration="1000"
+        class="py-8 px-5 rounded-2xl bg-surface-container/90 backdrop-blur-sm text-center mb-12 relative overflow-hidden">
+        <svg class="absolute bottom-0 left-0 w-20 h-20 text-secondary/20 translate-y-4 -translate-x-4 flower-deco-alt"
+          viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+          <path class="floral-leaf" d="M50,50 C30,20 70,0 90,30 C110,60 70,80 50,50 Z" />
+        </svg>
+        <div class="flex items-center justify-center gap-2 text-secondary mb-2">
+          <span class="material-symbols-outlined text-[20px]">hourglass_top</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-primary mb-6">Falta cada vez menos…</h3>
+        <div class="grid grid-cols-4 gap-2 max-w-sm mx-auto">
+          <div class="bg-surface-container-lowest rounded-xl py-4 px-1 shadow-sm flex flex-col items-center">
+            <span class="font-headline-lg-mobile text-headline-lg-mobile text-secondary font-normal"
+              id="countdown-days">--</span>
+            <span class="font-label-caps text-[10px] text-on-surface-variant mt-1">Días</span>
+          </div>
+          <div class="bg-surface-container-lowest rounded-xl py-4 px-1 shadow-sm flex flex-col items-center">
+            <span class="font-headline-lg-mobile text-headline-lg-mobile text-secondary font-normal"
+              id="countdown-hours">--</span>
+            <span class="font-label-caps text-[10px] text-on-surface-variant mt-1">Horas</span>
+          </div>
+          <div class="bg-surface-container-lowest rounded-xl py-4 px-1 shadow-sm flex flex-col items-center">
+            <span class="font-headline-lg-mobile text-headline-lg-mobile text-secondary font-normal"
+              id="countdown-minutes">--</span>
+            <span class="font-label-caps text-[10px] text-on-surface-variant mt-1">Min</span>
+          </div>
+          <div class="bg-surface-container-lowest rounded-xl py-4 px-1 shadow-sm flex flex-col items-center">
+            <span class="font-headline-lg-mobile text-headline-lg-mobile text-secondary font-normal"
+              id="countdown-seconds">--</span>
+            <span class="font-label-caps text-[10px] text-on-surface-variant mt-1">Seg</span>
+          </div>
+        </div>
+      </section>
+      <!-- SECCIÓN 4: UBICACIÓN Y ALTAR -->
+      <section data-aos="zoom-in-up" data-aos-duration="1200"
+        class="flex flex-col rounded-2xl overflow-hidden bg-surface-container-lowest/90 backdrop-blur-sm shadow-sm mb-12">
+        <div class="relative w-full h-72 overflow-hidden bg-[#e5e3df]">
+          <iframe
+            title="Ubicación de Pacará Center en Google Maps"
+            src="https://maps.google.com/maps?q=Pacar%C3%A1+Center,+Pcia+de+C%C3%B3rdoba+417,+San+Miguel+de+Tucum%C3%A1n&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+            class="w-full h-full border-0 filter contrast-[0.98] saturate-[0.95]"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <div class="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/50 to-transparent">
+          </div>
+        </div>
+        <div class="p-6 flex flex-col items-center text-center">
+          <div
+            class="w-10 h-10 -mt-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-md mb-3 z-10">
+            <span class="material-symbols-outlined text-[20px]">location_on</span>
+          </div>
+          <span class="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">Ceremonia &amp;
+            Fiesta</span>
+          <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-1 mb-1">Pacará Center</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6">Pcia de Córdoba 417, San Miguel de Tucumán</p>
+          <a class="w-full max-w-xs py-3.5 px-6 rounded-lg bg-surface-container text-primary font-label-caps text-label-caps hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2"
+            href="https://www.google.com/maps/place/Pacar%C3%A1+Center,+Pcia+de+C%C3%B3rdoba+417,+T4000JKI+San+Miguel+de+Tucum%C3%A1n,+Tucum%C3%A1n/data=!4m2!3m1!1s0x94225c1a05c16b71:0xb2144af1a00e80d0!18m1!1e1?utm_source=mstt_1&amp;entry=gps&amp;coh=192189&amp;g_ep=CAESBzI2LjM5LjQYACCenQoqqQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODI1MDI1LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1QgJBUg%3D%3D&amp;skid=c993d893-c890-43a1-b4a1-78973e1181dc&amp;g_st=aw" rel="noopener noreferrer" target="_blank">
+            <span class="material-symbols-outlined text-[18px] text-secondary">near_me</span>
+            <span>Cómo llegar</span>
+          </a>
+        </div>
+      </section>
+      <!-- SECCIÓN 5: DRESS CODE -->
+      <section data-aos="fade-up" data-aos-duration="1000"
+        class="relative p-6 rounded-2xl bg-surface-container-low/90 backdrop-blur-sm text-center mb-12 shadow-sm overflow-hidden">
+        <svg class="absolute top-1/2 left-0 w-24 h-24 text-secondary/15 -translate-y-1/2 -translate-x-8 flower-deco"
+          viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path class="floral-path" d="M0,50 C40,50 60,10 100,50" />
+          <path class="floral-leaf" d="M20,50 C30,30 50,30 60,50 C50,70 30,70 20,50 Z" />
+        </svg>
+        <div
+          class="w-10 h-10 rounded-full bg-surface-container-high mx-auto flex items-center justify-center text-secondary mb-3">
+          <span class="material-symbols-outlined text-[20px]">styler</span>
+        </div>
+        <span class="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">Vestimenta</span>
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-1 mb-2">Dress Code: Gala</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto mb-6">
+          Sugerimos tonos cálidos, neutros o elegantes acorde a la atmósfera del festejo.
+        </p>
+        <!-- Paleta cromática sugerida -->
+        <div class="flex items-center justify-center gap-3">
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full shadow-inner bg-[#EFE9DF]"></div>
+            <span class="text-[10px] font-label-caps text-on-surface-variant">Arena</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full shadow-inner bg-[#DEC395]"></div>
+            <span class="text-[10px] font-label-caps text-on-surface-variant">Champagne</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full shadow-inner bg-[#8E937E]"></div>
+            <span class="text-[10px] font-label-caps text-on-surface-variant">Salvia</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="w-10 h-10 rounded-full shadow-inner bg-[#1E252B]"></div>
+            <span class="text-[10px] font-label-caps text-on-surface-variant">Noche</span>
+          </div>
+        </div>
+      </section>
+      <!-- SECCIÓN 6: REGALOS Y TRANSFERENCIA -->
+      <section data-aos="fade-up" data-aos-duration="1000"
+        class="relative p-6 rounded-2xl bg-surface-container-lowest/90 backdrop-blur-sm text-center mb-12 shadow-sm overflow-hidden">
+        <svg class="absolute top-0 right-0 w-24 h-24 text-secondary/15 -translate-y-4 translate-x-8 flower-deco-alt"
+          viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+          <path class="floral-path" d="M0,50 C40,50 60,10 100,50" />
+          <path class="floral-leaf" d="M20,50 C30,30 50,30 60,50 C50,70 30,70 20,50 Z" />
+        </svg>
+        <div
+          class="w-10 h-10 rounded-full bg-secondary-container mx-auto flex items-center justify-center text-on-secondary-container mb-3">
+          <span class="material-symbols-outlined text-[20px]">featured_seasonal_and_gifts</span>
+        </div>
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-3">Regalos</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto mb-6">
+          Tu presencia es nuestro mejor regalo. Si además querés hacernos un presente, podés hacerlo aquí.
+        </p>
+        <!-- Tarjeta bancaria minimalista -->
+        <div class="p-5 rounded-xl bg-surface-container-low max-w-sm mx-auto text-left flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="font-label-caps text-label-caps text-secondary uppercase">Transferencia</span>
+            <span class="material-symbols-outlined text-secondary text-[20px]">credit_card</span>
+          </div>
+          <div>
+            <p class="font-label-sm text-label-sm text-on-surface-variant">Alias bancario</p>
+            <p class="font-headline-md text-headline-md text-primary tracking-normal font-mono select-all"
+              id="bank-alias">regalos.gracia08</p>
+          </div>
+          <button
+            class="w-full mt-2 py-3 px-4 rounded-lg bg-surface-container-highest text-primary font-label-caps text-label-caps flex items-center justify-center gap-2 active:scale-95 transition-all"
+            id="btn-copy-alias">
+            <span class="material-symbols-outlined text-[18px] text-secondary" id="copy-icon">content_copy</span>
+            <span id="copy-text">Copiar alias</span>
+          </button>
+        </div>
+      </section>
+      <!-- SECCIÓN 7: TARJETA DE LA FIESTA -->
+      <section data-aos="fade-up" data-aos-duration="1000"
+        class="relative p-6 rounded-2xl bg-surface-container-lowest/90 backdrop-blur-sm text-center mb-12 shadow-sm overflow-hidden">
+        <svg class="absolute top-0 left-0 w-24 h-24 text-secondary/15 -translate-y-4 -translate-x-8 flower-deco-alt"
+          viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path class="floral-path" d="M0,50 C40,50 60,10 100,50" />
+          <path class="floral-leaf" d="M20,50 C30,30 50,30 60,50 C50,70 30,70 20,50 Z" />
+        </svg>
+        <div
+          class="w-10 h-10 rounded-full bg-secondary-container mx-auto flex items-center justify-center text-on-secondary-container mb-3">
+          <span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+        </div>
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-3">Tarjeta de la Fiesta</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto mb-6">
+          Para nosotros lo más importante es compartir este día con vos. Para confirmar tu lugar y acompañarnos en la
+          celebración, podés abonar el valor de tu tarjeta aquí.
+        </p>
+        <!-- Tarjeta bancaria para pago de tarjeta -->
+        <div class="p-5 rounded-xl bg-surface-container-low max-w-sm mx-auto text-left flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="font-label-caps text-label-caps text-secondary uppercase">Pago de Tarjeta</span>
+            <span class="material-symbols-outlined text-secondary text-[20px]">payments</span>
+          </div>
+          <div>
+            <p class="font-label-sm text-label-sm text-on-surface-variant">Alias bancario</p>
+            <p class="font-headline-md text-headline-md text-primary tracking-normal font-mono select-all"
+              id="tarjeta-alias">boda.maxiymarina</p>
+          </div>
+          <button
+            class="w-full mt-2 py-3 px-4 rounded-lg bg-surface-container-highest text-primary font-label-caps text-label-caps flex items-center justify-center gap-2 active:scale-95 transition-all"
+            id="btn-copy-tarjeta-alias">
+            <span class="material-symbols-outlined text-[18px] text-secondary"
+              id="copy-tarjeta-icon">content_copy</span>
+            <span id="copy-tarjeta-text">Copiar alias</span>
+          </button>
+          <p class="font-body-md text-[12px] text-center text-on-surface-variant/80 mt-1">
+            Una vez realizada la transferencia, envianos el comprobante para registrar tu confirmación.
+          </p>
+        </div>
+      </section>
+      <!-- SECCIÓN 7: CIERRE EMOTIVO -->
+      <section data-aos="zoom-in" data-aos-duration="1500"
+        class="py-12 px-6 text-center flex flex-col items-center justify-center relative">
+        <div class="w-8 h-px bg-outline-variant mb-6"></div>
+        <span class="font-script-flourish text-script-flourish italic text-secondary mb-2">Marina &amp; Maxi</span>
+        <p class="font-headline-md text-headline-md text-primary max-w-xs mb-3 font-normal">
+          Esperamos compartir este día tan especial con vos.
+        </p>
+        <span class="font-label-caps text-label-caps text-on-surface-variant tracking-[0.25em]">08 · 12 · 2026</span>
+        <div class="flex items-center gap-2 text-secondary/60 mt-6">
+          <span class="material-symbols-outlined text-[20px]">spa</span>
+        </div>
+      </section>
+      <!-- MODAL / DRAWER INTERACTIVO RSVP -->
+      <div
+        class="fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-end sm:items-center justify-center p-0 sm:p-4"
+        id="rsvp-modal">
+        <div
+          class="w-full max-w-md bg-surface rounded-t-2xl sm:rounded-2xl p-6 shadow-2xl transform translate-y-8 transition-transform duration-300">
+          <div class="flex items-center justify-between pb-3">
+            <h4 class="font-headline-md text-headline-md text-primary">Confirmar Asistencia</h4>
+            <button
+              class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant"
+              id="btn-close-rsvp">
+              <span class="material-symbols-outlined text-[18px]">close</span>
+            </button>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-4">Por favor dejanos tus datos para coordinar
+            el catering y la mesa.</p>
+          <form class="flex flex-col gap-4" id="rsvp-form">
+            <div>
+              <label class="block font-label-caps text-[10px] text-secondary uppercase mb-1">Nombre Completo</label>
+              <input
+                class="w-full px-4 py-3 rounded-lg bg-surface-container-low text-primary placeholder:text-outline font-body-md text-body-md outline-none"
+                placeholder="Ej: Sofía Benítez" required="" type="text" />
+            </div>
+            <div>
+              <label class="block font-label-caps text-[10px] text-secondary uppercase mb-1">¿Asistirás?</label>
+              <div class="grid grid-cols-2 gap-2">
+                <label
+                  class="flex items-center justify-center gap-2 p-3 rounded-lg bg-surface-container-low cursor-pointer has-[:checked]:bg-secondary has-[:checked]:text-on-secondary font-label-sm text-label-sm transition-colors">
+                  <input checked="" class="hidden" name="attendance" type="radio" value="si" />
+                  <span>¡Sí, asisto!</span>
+                </label>
+                <label
+                  class="flex items-center justify-center gap-2 p-3 rounded-lg bg-surface-container-low cursor-pointer has-[:checked]:bg-secondary has-[:checked]:text-on-secondary font-label-sm text-label-sm transition-colors">
+                  <input class="hidden" name="attendance" type="radio" value="no" />
+                  <span>No podré ir</span>
+                </label>
+              </div>
+            </div>
+            <div>
+              <label class="block font-label-caps text-[10px] text-secondary uppercase mb-1">Restricciones
+                Alimentarias</label>
+              <input
+                class="w-full px-4 py-3 rounded-lg bg-surface-container-low text-primary placeholder:text-outline font-body-md text-body-md outline-none"
+                placeholder="Celíaco, vegetariano, etc." type="text" />
+            </div>
+            <button
+              class="w-full py-4 rounded-lg bg-primary-container text-surface-bright font-label-caps text-label-caps tracking-widest mt-2 active:scale-95 transition-transform"
+              type="submit">
+              Enviar Confirmación
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Cuenta Regresiva: 8 de Diciembre de 2026, 13:00 hs Argentina (UTC-3)
+      const targetWeddingDate = new Date('2026-12-08T13:00:00-03:00').getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetWeddingDate - now;
+
+        if (distance > 0) {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
+          document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
+          document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
+          document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
+        }
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // Copiar alias de Regalos al portapapeles
+      const btnCopyAlias = document.getElementById('btn-copy-alias');
+      if (btnCopyAlias) {
+        btnCopyAlias.addEventListener('click', () => {
+          const alias = 'regalos.gracia08';
+          navigator.clipboard.writeText(alias).then(() => {
+            const copyText = document.getElementById('copy-text');
+            const copyIcon = document.getElementById('copy-icon');
+            copyText.textContent = '¡Alias copiado!';
+            copyIcon.textContent = 'check';
+            btnCopyAlias.classList.add('bg-secondary-container', 'text-on-secondary-container');
+
+            setTimeout(() => {
+              copyText.textContent = 'Copiar alias';
+              copyIcon.textContent = 'content_copy';
+              btnCopyAlias.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+            }, 2500);
+          });
+        });
+      }
+
+      // Copiar alias de Tarjeta de Fiesta al portapapeles
+      const btnCopyTarjetaAlias = document.getElementById('btn-copy-tarjeta-alias');
+      if (btnCopyTarjetaAlias) {
+        btnCopyTarjetaAlias.addEventListener('click', () => {
+          const alias = 'boda.maxiymarina';
+          navigator.clipboard.writeText(alias).then(() => {
+            const copyTarjetaText = document.getElementById('copy-tarjeta-text');
+            const copyTarjetaIcon = document.getElementById('copy-tarjeta-icon');
+            copyTarjetaText.textContent = '¡Alias copiado!';
+            copyTarjetaIcon.textContent = 'check';
+            btnCopyTarjetaAlias.classList.add('bg-secondary-container', 'text-on-secondary-container');
+
+            setTimeout(() => {
+              copyTarjetaText.textContent = 'Copiar alias';
+              copyTarjetaIcon.textContent = 'content_copy';
+              btnCopyTarjetaAlias.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+            }, 2500);
+          });
+        });
+      }
+
+      // Interacción de Bienvenida, Música y Apertura de la Invitación
+      const welcomeGate = document.getElementById('welcome-gate');
+      const btnAudio = document.getElementById('btn-audio-enter');
+      const btnSilent = document.getElementById('btn-silent-enter');
+      const weddingAudio = document.getElementById('wedding-audio');
+      const btnMusicToggle = document.getElementById('btn-music-toggle');
+      const musicToggleIcon = document.getElementById('music-toggle-icon');
+
+      function updateMusicUI(isPlaying) {
+        if (!musicToggleIcon || !btnMusicToggle) return;
+        if (isPlaying) {
+          musicToggleIcon.textContent = 'music_note';
+          btnMusicToggle.classList.add('border-secondary', 'text-secondary', 'shadow-[0_0_15px_rgba(112,91,54,0.4)]');
+          btnMusicToggle.classList.remove('opacity-60', 'border-secondary/20');
+          btnMusicToggle.setAttribute('aria-label', 'Silenciar música');
+          btnMusicToggle.setAttribute('title', 'Silenciar música');
+        } else {
+          musicToggleIcon.textContent = 'music_off';
+          btnMusicToggle.classList.remove('border-secondary', 'shadow-[0_0_15px_rgba(112,91,54,0.4)]');
+          btnMusicToggle.classList.add('opacity-60', 'border-secondary/20');
+          btnMusicToggle.setAttribute('aria-label', 'Activar música');
+          btnMusicToggle.setAttribute('title', 'Activar música');
+        }
+      }
+
+      function toggleMusic() {
+        if (!weddingAudio) return;
+        if (weddingAudio.paused || weddingAudio.muted) {
+          weddingAudio.muted = false;
+          weddingAudio.play().then(() => {
+            updateMusicUI(true);
+          }).catch(err => {
+            console.warn('Error al activar música:', err);
+          });
+        } else {
+          weddingAudio.muted = true;
+          weddingAudio.pause();
+          updateMusicUI(false);
+        }
+      }
+
+      if (weddingAudio) {
+        weddingAudio.addEventListener('play', () => updateMusicUI(true));
+        weddingAudio.addEventListener('pause', () => updateMusicUI(false));
+      }
+
+      function openInvitation(playMusic) {
+        if (playMusic && weddingAudio) {
+          weddingAudio.muted = false;
+          updateMusicUI(true);
+          weddingAudio.play().then(() => {
+            updateMusicUI(true);
+          }).catch((err) => {
+            console.warn('Reproducción de audio bloqueada:', err);
+            updateMusicUI(false);
+          });
+        } else {
+          if (weddingAudio) {
+            weddingAudio.pause();
+            weddingAudio.muted = true;
+          }
+          updateMusicUI(false);
+        }
+
+        if (welcomeGate) {
+          welcomeGate.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+          setTimeout(() => {
+            welcomeGate.style.display = 'none';
+            document.body.classList.remove('overflow-hidden');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            if (typeof AOS !== 'undefined') {
+              AOS.refresh();
+            }
+          }, 600);
+        } else {
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+
+      if (btnAudio) btnAudio.addEventListener('click', () => openInvitation(true));
+      if (btnSilent) btnSilent.addEventListener('click', () => openInvitation(false));
+
+      // Botón flotante para mutear y desmutear en cualquier momento
+      if (btnMusicToggle) {
+        btnMusicToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleMusic();
+        });
+      }
+
+      // Modal RSVP
+      const btnOpenRsvp = document.getElementById('btn-open-rsvp');
+      const btnCloseRsvp = document.getElementById('btn-close-rsvp');
+      const rsvpModal = document.getElementById('rsvp-modal');
+      const rsvpForm = document.getElementById('rsvp-form');
+
+      if (btnOpenRsvp && rsvpModal) {
+        btnOpenRsvp.addEventListener('click', () => {
+          rsvpModal.classList.remove('opacity-0', 'pointer-events-none');
+          const inner = rsvpModal.querySelector('div');
+          if (inner) inner.classList.remove('translate-y-8');
+        });
+      }
+
+      function hideModal() {
+        if (rsvpModal) {
+          rsvpModal.classList.add('opacity-0', 'pointer-events-none');
+          const inner = rsvpModal.querySelector('div');
+          if (inner) inner.classList.add('translate-y-8');
+        }
+      }
+
+      if (btnCloseRsvp) btnCloseRsvp.addEventListener('click', hideModal);
+      if (rsvpModal) {
+        rsvpModal.addEventListener('click', (e) => {
+          if (e.target === rsvpModal) hideModal();
+        });
+      }
+
+      if (rsvpForm) {
+        rsvpForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('¡Gracias por confirmar tu lugar en nuestro gran día!');
+          hideModal();
+        });
+      }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: false,
+        mirror: true,
+        offset: 50
+      });
+    </script>
+  </main>
+  <aside class="fixed bottom-6 right-5 z-50 pb-safe">
+    <button id="btn-music-toggle" type="button" aria-label="Silenciar o activar música"
+      class="w-12 h-12 rounded-full bg-surface/95 backdrop-blur-md shadow-[0_4px_20px_rgba(112,91,54,0.25)] border-2 border-secondary/40 flex items-center justify-center text-secondary transition-all active:scale-90 hover:scale-105 cursor-pointer opacity-60">
+      <span class="material-symbols-outlined text-[24px]" id="music-toggle-icon">music_off</span>
+    </button>
+  </aside>
+</body>
+
+</html>
